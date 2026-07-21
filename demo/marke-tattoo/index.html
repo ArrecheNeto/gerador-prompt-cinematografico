@@ -663,11 +663,15 @@ if(reduced || isMobile){
     return el;
   });
 
-  let loadedMeta = 0, failed = false;
+  let loadedMeta = 0;
   vids.forEach(v=>{
-    v.addEventListener('loadedmetadata',()=>{loadedMeta++;});
-    v.addEventListener('error',()=>{failed = true;});
+    v.addEventListener('loadedmetadata',()=>{loadedMeta++; syncPoster();});
+    v.addEventListener('canplay',syncPoster);
   });
+  function syncPoster(){
+    const v = vids[Math.max(active,0)];
+    document.getElementById('poster').style.opacity = (v && v.readyState>=1) ? 0 : 1;
+  }
 
   /* espaçador que define o comprimento da jornada */
   document.getElementById('spacer').style.height = (VIDEOS.length*160)+'vh';
@@ -688,7 +692,7 @@ if(reduced || isMobile){
         gsap.to(o,{opacity:0,duration:.3,overwrite:true,onComplete:()=>gsap.set(o,{visibility:'hidden'})});
       }
     });
-    document.getElementById('poster').style.opacity = 0;
+    syncPoster();
   }
 
   ScrollTrigger.create({
@@ -711,13 +715,7 @@ if(reduced || isMobile){
   });
   setActive(0);
 
-  /* fallback: se NENHUM vídeo carregar em 8s, mantém o poster e overlays por scroll */
-  setTimeout(()=>{
-    if(loadedMeta===0){
-      vids.forEach(v=>v.remove());
-      document.getElementById('poster').style.opacity = 1;
-    }
-  },8000);
+  /* sem fallback destrutivo: o poster cobre o palco até o clipe ativo estar pronto */
 
   /* ---- reveals das seções de conteúdo ---- */
   gsap.utils.toArray('.reveal').forEach(el=>{
