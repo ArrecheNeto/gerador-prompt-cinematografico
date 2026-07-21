@@ -1,7 +1,8 @@
 # Mapas de jornada por nicho
 
 Cada nicho vira uma jornada: HERO (ferramenta/simbolo) -> ETAPAS (processo real) -> REVEAL
-(pessoa ou produto pronto). Copie o mapa, ajuste ao cliente e encaixe em `{CENAS}` / `{SECOES}`
+(pessoa ou produto pronto). O FORMATO indicado (CLIPES ou VIDEO_UNICO) e so um padrao do nicho e
+NAO depende da FONTE do conteudo (pasta ou URL) — as duas escolhas sao independentes. Copie o mapa, ajuste ao cliente e encaixe em `{CENAS}` / `{SECOES}`
 do template. Se o nicho nao estiver aqui, siga a mesma logica.
 
 Formato de cada cena para `{CENAS}`:
@@ -27,7 +28,7 @@ Formato de cada cena para `{CENAS}`:
 - SECOES: hero, traco, sombreado e cor, finalizacao e cuidados, estilos e servicos, historia de
   {PESSOA}, agendamento, depoimentos, FAQ e CTA WhatsApp.
 
-## Cafeteria especial  (bom no MODO B, video unico)
+## Cafeteria especial  (FORMATO padrao: VIDEO_UNICO)
 - HERO_IMG: xicara de cafe especial premium com um grao ao lado, vapor sutil, luz quente sobre
   fundo escuro e torrado.
 - DIRECAO_ARTE: publicitaria e acolhedora, fotografia de produto apetitosa.
@@ -50,7 +51,7 @@ Formato de cada cena para `{CENAS}`:
 - SECOES: hero, preparo, coccao, empratamento, cardapio, historia do {PESSOA}/casa, reservas,
   depoimentos, FAQ e CTA WhatsApp/reserva.
 
-## Imobiliaria / imovel de alto padrao  (bom no MODO B)
+## Imobiliaria / imovel de alto padrao  (FORMATO padrao: VIDEO_UNICO)
 - HERO_IMG: fachada de uma casa/apartamento de alto padrao ao entardecer, luzes internas quentes
   acesas, sob luz cinematografica.
 - DIRECAO_ARTE: arquitetura publicitaria, elegante e aspiracional.
@@ -81,6 +82,6 @@ Formato de cada cena para `{CENAS}`:
 1. Escolha o SIMBOLO do nicho para a hero (a ferramenta/produto que representa o oficio).
 2. Quebre o "resultado" do negocio em 3 etapas de PROCESSO real (nada magico).
 3. Termine no REVEAL: pessoa (identity reference) para servico com rosto, OU produto pronto para
-   nichos de produto (use MODO B com video unico).
+   nichos de produto (use FORMATO=VIDEO_UNICO).
 4. Defina paleta a partir da cor da marca; mantenha fundo escuro + texto quente + 1 cor de detalhe.
 5. Liste as SECOES espelhando as cenas + o conteudo real (servicos, historia, depoimentos, FAQ, CTA).
