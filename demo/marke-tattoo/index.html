@@ -564,7 +564,7 @@ body.static-mode #spacer{display:none}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.14/lenis.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
 /* ============ CONFIG: clipes gerados no Higgsfield (Cinema Studio 3.0) ============ */
 const CDN = "https://d8j0ntlcm91z4.cloudfront.net/user_34FqyWnsgf5IAB1qq1sv6tso2gp/";
@@ -643,11 +643,14 @@ gsap.registerPlugin(ScrollTrigger);
 if(reduced || isMobile){
   enableStaticMode();
 }else{
-  /* ---- Lenis smooth scroll sincronizado com GSAP ---- */
-  const lenis = new Lenis({lerp:.09,smoothWheel:true});
-  lenis.on('scroll',ScrollTrigger.update);
-  gsap.ticker.add(t=>lenis.raf(t*1000));
-  gsap.ticker.lagSmoothing(0);
+  /* ---- Lenis smooth scroll sincronizado com GSAP (com guarda) ---- */
+  let lenis = null;
+  if(typeof Lenis !== 'undefined'){
+    lenis = new Lenis({lerp:.09,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(t=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+  }
 
   /* ---- injeta os vídeos ---- */
   const stage = document.getElementById('stage');
@@ -730,7 +733,8 @@ if(reduced || isMobile){
       const id = a.getAttribute('href');
       if(id.length>1 && document.querySelector(id)){
         e.preventDefault();
-        lenis.scrollTo(id,{offset:-20});
+        if(lenis){ lenis.scrollTo(id,{offset:-20}); }
+        else{ document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
       }
     });
   });
