@@ -23,14 +23,31 @@ e amarrar tudo numa jornada de rolagem consistente.
 **Somente o prompt final do Higgsfield**, num bloco de codigo copiavel (arquivo `.md` salvo em
 outputs). Nao gera roteiro de video, nao gera o site aqui — so o prompt que o usuario vai colar.
 
-## Passo 1 — Detectar o MODO
+## Passo 1 — Detectar FONTE e FORMATO (duas escolhas independentes)
 
-- **Transformar site existente** — ja existe um site na pasta e o usuario quer deixar
-  cinematografico. Preserva o conteudo real, faz backup, reune tudo em uma `index.html`.
-- **Criar do zero (via URL)** — a pasta esta vazia; usa um site existente (URL) so como
-  fonte de conteudo e cria uma landing nova e original.
+**FONTE do conteudo** — de onde vem o texto real do site:
 
-Se nao estiver claro, pergunte apenas isso.
+- `PASTA` — os arquivos do site ja estao na pasta do projeto. O prompt manda analisar o projeto,
+  fazer backup e reunir tudo numa `index.html`.
+- `URL` — a pasta esta vazia e o conteudo vem de um site publicado. O prompt manda ler a URL e
+  criar uma landing nova e original.
+
+**FORMATO visual** — como o video e gerado:
+
+- `CLIPES` — 4 a 5 clipes encadeados (o ultimo quadro de um vira o `start_image` do proximo).
+  Melhor para nichos de processo (tatuagem, restaurante, academia).
+- `VIDEO_UNICO` — um unico video continuo estilo comercial da Apple + 6 a 8 fotos de apoio.
+  Melhor para nichos de produto/ambiente (cafeteria, imobiliaria).
+
+As duas escolhas sao **independentes**: FONTE=URL com FORMATO=CLIPES e uma combinacao valida e
+comum. Nao amarre uma na outra.
+
+**Regra critica:** se a FONTE for `URL`, o prompt gerado NAO pode conter "site existente nesta
+pasta", "analise todo o projeto" nem "crie um backup" — nao ha arquivos. E a `{URL}` precisa
+aparecer explicitamente no prompt.
+
+Se a FONTE nao estiver clara, pergunte so isso. O FORMATO pode ser inferido do nicho (use o
+padrao indicado em `jornadas-por-nicho.md`).
 
 ## Passo 2 — Coletar o minimo (pergunte so o que faltar)
 
@@ -38,7 +55,8 @@ Se nao estiver claro, pergunte apenas isso.
 - Nome do negocio.
 - Pessoa que aparece no final (nome) OU produto que e o "heroi" (se nao houver pessoa).
 - Cor de destaque da marca.
-- URL do site de referencia (obrigatorio no modo "criar do zero").
+- URL do site de origem — **obrigatorio quando FONTE=URL**. Sem ela, nao gere o prompt: peca a
+  URL antes.
 - Confirmar a pasta de fotos de referencia da pessoa: `assets/referencias-.../` (para
   `identity reference`).
 
@@ -60,7 +78,10 @@ crie a jornada seguindo a mesma logica (ferramenta -> processo -> reveal).
 
 ## Passo 4 — Preencher o TEMPLATE
 
-Use o template parametrizado em `references/template-prompt.md` (variante existente OU do zero).
+Use o template parametrizado em `references/template-prompt.md`. Ele e montado em 6 blocos:
+escolha a variante do BLOCO 1 pela FONTE (pasta ou URL) e a do BLOCO 3 pelo FORMATO (clipes ou
+video unico); os demais blocos sao fixos. Rode o checklist do fim do template antes de entregar.
+
 Regras que NUNCA mudam (ja embutidas no template):
 
 - Higgsfield MCP; preferir **Cinema Studio 3.0 em 4K**; clipes **16:9, 5-10s, sem audio**.
