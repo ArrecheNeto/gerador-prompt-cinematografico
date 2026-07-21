@@ -1,6 +1,6 @@
 {
   "name": "sites-cinematograficos-higgsfield",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gera prompts completos e prontos para colar no Claude que criam sites e landing pages cinematograficos com rolagem 3D usando o Higgsfield MCP, para qualquer nicho.",
   "author": {
     "name": "Helio Arreche"
